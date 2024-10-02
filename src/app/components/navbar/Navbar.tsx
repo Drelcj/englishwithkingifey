@@ -39,10 +39,10 @@ export default function Navbar () {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/my-works">My Works</Link>
+              <Link href="/contact">About Me</Link>
             </li>
             <li>
-          <Link href="/my-services">My Services</Link>
+          <Link href="/my-services">Contact Me</Link>
           </li>
             <li>
           <Link href="/my-books">My Books</Link>
@@ -61,7 +61,7 @@ export default function Navbar () {
                 </li>
               </ul>
             </li>
-            <li>
+            {/* <li>
             <details>
               <summary><Link href="/about">About Me</Link></summary>
               <ul className="p-2">
@@ -71,7 +71,7 @@ export default function Navbar () {
               
               </ul>
             </details>
-          </li>
+          </li> */}
           </ul>
         </div>
         <Link href="/">
@@ -89,10 +89,10 @@ export default function Navbar () {
               <Link href="/">Home</Link>
             </li>
           <li>
-          <Link href="/my-works">My Works</Link>
+          <Link href="/about">About Me</Link>
           </li>
           <li>
-          <Link href="/my-services">My Services</Link>
+          <Link href="/contact">Contact Me</Link>
           </li>
           <li>
           <Link href="/my-books">My Books</Link>
@@ -113,7 +113,7 @@ export default function Navbar () {
               </ul>
             </details>
           </li>
-          <li>
+          {/* <li>
             <details>
               <summary><Link href="/about">About Me</Link></summary>
               <ul className="p-2">
@@ -123,7 +123,7 @@ export default function Navbar () {
 
               </ul>
             </details>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="navbar-end">

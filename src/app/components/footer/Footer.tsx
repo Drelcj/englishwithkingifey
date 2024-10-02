@@ -5,6 +5,7 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
+  FaTiktok,
 } from "react-icons/fa6";
 
 const Footer = () => {
@@ -104,7 +105,7 @@ const Footer = () => {
         <nav className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">
             <Link
-              href="https://www.instagram.com/chiomaezenwafor"
+              href="https://www.instagram.com/englishwith_kingifey?igsh=MWtlcHd2bWxlb2Rw&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               className=" link link-hover text-blue-600"
@@ -113,7 +114,16 @@ const Footer = () => {
               <FaInstagram />
             </Link>
             <Link
-              href="https://x.com/chiomaezenwafo?t=FRWKssWYzwedLGwCGqKEJA&s=09"
+              href="https://www.tiktok.com/@king_ifey?_t=8q9hcdUKYXW&_r=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className=" link link-hover text-blue-600"
+            >
+              {" "}
+              <FaTiktok />
+            </Link>
+            <Link
+              href="https://x.com/King_ifey"
               target="_blank"
               rel="noopener noreferrer"
               className=" link link-hover text-blue-600"
@@ -122,7 +132,7 @@ const Footer = () => {
               <FaXTwitter />
             </Link>
             <Link
-              href="https://ng.linkedin.com/in/chiomaezenwafor"
+              href="https://www.linkedin.com/in/ifechukwu-muonyili-9b9b78174?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
               target="_blank"
               rel="noopener noreferrer"
               className=" link link-hover text-blue-600"
@@ -131,7 +141,7 @@ const Footer = () => {
               <FaLinkedinIn />
             </Link>
             <Link
-              href="https://www.facebook.com/chiomahopeezenwafor?mibextid=LQQJ4d"
+              href="https://www.facebook.com/Kingifey01?mibextid=LQQJ4d"
               target="_blank"
               rel="noopener noreferrer"
               className=" link link-hover text-blue-600"

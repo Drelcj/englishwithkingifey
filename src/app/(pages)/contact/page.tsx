@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from "react";
-import { FaXTwitter, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
+import { FaXTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok} from "react-icons/fa6";
 
 interface FormData {
   name: string;
@@ -18,9 +18,10 @@ const Contact = () => {
   // Social media links 
   const socialMediaLinks = [
     { name: <FaInstagram />, url: "https://www.instagram.com/englishwith_kingifey?igsh=MWtlcHd2bWxlb2Rw&utm_source=qr" },
-    { name: <FaLinkedinIn />, url: "https://ng.linkedin.com/in/chiomaezenwafor" },
-    { name: <FaFacebookF />, url: "https://www.facebook.com/chiomahopeezenwafor?mibextid=LQQJ4d" },
-    { name: <FaXTwitter />, url: "https://x.com/chiomaezenwafo?t=FRWKssWYzwedLGwCGqKEJA&s=09" },
+    { name: <FaTiktok />, url: "https://www.tiktok.com/@king_ifey?_t=8q9hcdUKYXW&_r=1" },
+    { name: <FaLinkedinIn />, url: "https://www.linkedin.com/in/ifechukwu-muonyili-9b9b78174?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" },
+    { name: <FaFacebookF />, url: "https://www.facebook.com/Kingifey01?mibextid=LQQJ4d" },
+    { name: <FaXTwitter />, url: "https://x.com/King_ifey" },
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
