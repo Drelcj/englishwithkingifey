@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import UserButton from "./UserButton";
+
 // import { signIn, useSession } from "next-auth/react";
 
 export default function Navbar () {
@@ -137,10 +137,10 @@ export default function Navbar () {
   );
 };
 
-function SignInButton () {
-  return (
-    <button>Log in</button>
-    // <button onClick={() => signIn()} className="btn">Log In</button>
+// function SignInButton () {
+//   return (
+//     <button>Log in</button>
+//     // <button onClick={() => signIn()} className="btn">Log In</button>
      
-  );
-}
+//   );
+// }

@@ -13,7 +13,7 @@ const TestimonialSection = () => {
           <div className="card-body items-center justify-center">
             <h2 className="card-title text-blue-500">Sarah</h2>
             <p className="text-align-center text-base">
-            King Ifey&apos;s passion for language is infectious. His online course was engaging and informative. I not only improved my pronunciation but also gained valuable insights into the nuances of English grammar and usage. I&apos;m grateful for his guidance and support."
+            King Ifey&apos;s passion for language is infectious. His online course was engaging and informative. I not only improved my pronunciation but also gained valuable insights into the nuances of English grammar and usage. I&apos;m grateful for his guidance and support.&ldquo;
             </p>
           </div>
         </div>
