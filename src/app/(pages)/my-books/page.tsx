@@ -1,8 +1,9 @@
+import { img } from "framer-motion/client";
 import React from "react";
 
 const MyBooks = () => {
   const bookLinks = [
-    { platform: "Amazon Kindle", url: "https://a.co/d/a" },
+    { platform: "Amazon Kindle", imgSrc: "https://res.cloudinary.com/dt3czltxx/image/upload/v1731947460/WhatsApp_Image_2024-11-18_at_4.52.45_PM_iqvmt9.jpg", url: "https://a.co/d/a" },
     { platform: "Amazon Paperback", url: "https://a.cM7b" },
     // { platform: "Okadabooks", url: "bit.ly/3Ywa06R" },
     // { platform: "BamBooks", url: "https://bambooks.io/book/share/becoming-a-news--titan/16103" },
@@ -15,6 +16,7 @@ const MyBooks = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {bookLinks.map((book, index) => (
           <a key={index} href={book.url} target="_blank" rel="noopener noreferrer" className="bg-white rounded shadow p-4 flex flex-col items-center text-center hover:bg-gray-200">
+            <img src={book.imgSrc} alt={`${book.platform} logo`} className="mb-4 w-32 h-32 object-contain" />
             <h2 className="text-xl font-semibold text-gray-800 mb-2">Available on {book.platform}</h2>
             <p className="text-blue-500">Get your copy</p>
           </a>
