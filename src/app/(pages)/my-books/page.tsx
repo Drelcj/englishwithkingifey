@@ -18,7 +18,7 @@ const MyBooks = () => {
           <a key={index} href={book.url} target="_blank" rel="noopener noreferrer" className="bg-white rounded shadow p-4 flex flex-col items-center text-center hover:bg-gray-200">
             <img src={book.imgSrc} alt={`${book.platform} logo`} className="mb-4 w-32 h-32 object-contain" />
             <h2 className="text-xl font-semibold text-gray-800 mb-2">Available on {book.platform}</h2>
-            <p className="text-blue-500">Get your copy</p>
+            <p className="text-blue-500">Get your copy now</p>
           </a>
         ))}
       </div>
