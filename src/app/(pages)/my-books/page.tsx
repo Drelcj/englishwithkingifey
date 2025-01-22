@@ -1,4 +1,4 @@
-import { img } from "framer-motion/client";
+import Image from "next/image";
 import React from "react";
 
 const MyBooks = () => {
@@ -16,7 +16,7 @@ const MyBooks = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {bookLinks.map((book, index) => (
           <a key={index} href={book.url} target="_blank" rel="noopener noreferrer" className="bg-white rounded shadow p-4 flex flex-col items-center text-center hover:bg-gray-200">
-            <img src={book.imgSrc} alt={`${book.platform} logo`} className="mb-4 w-32 h-32 object-contain" />
+            {book.imgSrc && <Image src={book.imgSrc} alt={`${book.platform} logo`} width={128} height={128} className="mb-4 object-contain" />}
             <h2 className="text-xl font-semibold text-gray-800 mb-2">Available on {book.platform}</h2>
             <p className="text-blue-500">Get your copy now</p>
           </a>
@@ -25,5 +25,4 @@ const MyBooks = () => {
     </div>
   );
 };
-
 export default MyBooks;
