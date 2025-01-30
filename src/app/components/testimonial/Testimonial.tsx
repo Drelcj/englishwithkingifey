@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const TestimonialSection = () => {
   return (
@@ -7,7 +8,7 @@ const TestimonialSection = () => {
         <div className="card w-96 bg-base-100 shadow-xl md:w-1/2">  {/* Adjust width as needed */}
           <div className="avatar justify-center py-10">
             <div className="w-24 rounded-full ring ring-blue-500 ring-offset-2">
-              <img src="https://res.cloudinary.com/dt3czltxx/image/upload/v1698814812/samples/look-up.jpg" alt="User Avatar" />
+              <Image src="https://res.cloudinary.com/dt3czltxx/image/upload/v1698814812/samples/look-up.jpg" alt="User Avatar" />
             </div>
           </div>
           <div className="card-body items-center justify-center">
@@ -21,7 +22,7 @@ const TestimonialSection = () => {
         <div className="card w-96 bg-base-100 shadow-xl md:w-1/2">  {/* Adjust width as needed */}
           <div className="avatar justify-center py-10">
             <div className="w-24 rounded-full ring ring-blue-500 ring-offset-2">
-              <img src="https://res.cloudinary.com/dt3czltxx/image/upload/v1698814813/samples/man-on-a-escalator.jpg" alt="User Avatar" />
+              <Image src="https://res.cloudinary.com/dt3czltxx/image/upload/v1698814813/samples/man-on-a-escalator.jpg" alt="User Avatar" />
             </div>
           </div>
           <div className="card-body items-center justify-center">
@@ -35,7 +36,7 @@ const TestimonialSection = () => {
         <div className="card w-96 bg-base-100 shadow-xl md:w-1/2">  {/* Adjust width as needed */}
           <div className="avatar justify-center py-10">
             <div className="w-24 rounded-full ring ring-blue-500 ring-offset-2">
-              <img src="https://res.cloudinary.com/dt3czltxx/image/upload/v1709564009/drel_mid_pov.jpg_export_syl5rv.jpg" alt="User Avatar" />
+              <Image src="https://res.cloudinary.com/dt3czltxx/image/upload/v1709564009/drel_mid_pov.jpg_export_syl5rv.jpg" alt="User Avatar" />
             </div>
           </div>
           <div className="card-body items-center justify-center">

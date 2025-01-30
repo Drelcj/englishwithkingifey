@@ -77,7 +77,7 @@ export default function Navbar () {
         <Link href="/">
           <Image
             src="https://res.cloudinary.com/dt3czltxx/image/upload/v1727703156/kingifey/kingifey_logo_hhf3uj.png"
-            alt="Chioma Ezenwafor Blog's Temporal logo"
+            alt="King Ifey's logo"
             width={80}
             height={80}
           />
