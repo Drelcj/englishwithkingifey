@@ -78,7 +78,7 @@ const HeroSlider = () => {
             <motion.h1 className="text-4xl mb-4" whileHover={{ scale: 1.1 }}>{slide.title}</motion.h1>
             <motion.p className="text-xl mb-8" whileHover={{ scale: 1.1 }}>{slide.subtitle}</motion.p>
             <Link href={slide.link}>
-              <motion.a className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-red-400 hover:text-black transition-colors duration-200" whileHover={{ scale: 1.1 }}>{slide.cta}</motion.a>
+              <motion.div className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-red-400 hover:text-black transition-colors duration-200" whileHover={{ scale: 1.1 }}>{slide.cta}</motion.div>
             </Link>
           </div>
         </motion.div>
