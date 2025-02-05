@@ -61,7 +61,7 @@ const RegisterForm = () => {
               type="email"
               className="input input-bordered w-full"
             />
-            <div className="text-red-500">
+            <div className="text-blue-500">
               {form.formState.errors.email && form.formState.errors.email.message}
             </div>
           </div>
@@ -74,7 +74,7 @@ const RegisterForm = () => {
               placeholder="John Doe"
               className="input input-bordered w-full"
             />
-            <div className="text-red-500">
+            <div className="text-blue-500">
               {form.formState.errors.name && form.formState.errors.name.message}
             </div>
           </div>
@@ -88,7 +88,7 @@ const RegisterForm = () => {
               type="password"
               className="input input-bordered w-full"
             />
-            <div className="text-red-500">
+            <div className="text-blue-500">
               {form.formState.errors.password && form.formState.errors.password.message}
             </div>
           </div>
@@ -102,7 +102,7 @@ const RegisterForm = () => {
               type="password"
               className="input input-bordered w-full"
             />
-            <div className="text-red-500">
+            <div className="text-blue-500">
               {form.formState.errors.passwordConfirmation &&
                 form.formState.errors.passwordConfirmation.message}
             </div>

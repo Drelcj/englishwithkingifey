@@ -40,6 +40,8 @@ export const register = async (data: z.infer<typeof RegisterSchema>) => {
       return { error: "Email already is in use. Please try another one." };
     }
 
+    // change the letters in the email to lowercase
+
     const lowerCaseEmail = email.toLowerCase();
 
     // Create the user
@@ -50,6 +52,8 @@ export const register = async (data: z.infer<typeof RegisterSchema>) => {
         password: hashedPassword,
       },
     });
+
+
 
     // Generate Verification Token
     // const verificationToken = await generateVerificationToken(email);
