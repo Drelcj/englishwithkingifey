@@ -14,7 +14,7 @@ import Link from "next/link";
 const LoginForm = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-
+    
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
@@ -32,6 +32,8 @@ const LoginForm = () => {
             } else {
                 setError("");
                 setLoading(false);
+                // In a real app, you might handle client-side redirect after successful credential login here,
+                // or rely on server-side redirect from the action if you are handling redirect in login action.
             }
         });
     };

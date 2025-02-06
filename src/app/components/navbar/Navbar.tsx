@@ -129,7 +129,7 @@ export default function Navbar () {
         {/* {user && <UserButton user={user} />}
         {!user && session.status !== "loading" && <SignInButton />}  */}
         {/* create a custom signin page  later */}
-        {/* <Link href="/signin" className="btn"> Log In </Link> */}
+         <Link href="/auth/login" className="btn"> Log In </Link> 
   
       </div>
     </div>
