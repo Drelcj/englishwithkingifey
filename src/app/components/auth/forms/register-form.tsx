@@ -9,7 +9,7 @@ import { RegisterSchema } from "@/schemas";
 import { register } from "@/actions/register";
 import { FormSuccess } from "../form-success";
 import { FormError } from "../form-error";
-import GoogleLogin from "../google-login";
+//import GoogleLogin from "../google-login";
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
@@ -114,7 +114,7 @@ const RegisterForm = () => {
           {loading ? "Loading..." : "Register"}
         </button>
       </form>
-      <GoogleLogin />
+        {/*<GoogleLogin />*/}
     </CardWrapper>
   );
 };

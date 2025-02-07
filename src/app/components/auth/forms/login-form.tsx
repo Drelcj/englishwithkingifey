@@ -8,7 +8,7 @@ import CardWrapper from "../card-wrapper";
 import { LoginSchema } from "@/schemas";
 import { FormError } from "../form-error";
 import { login } from "@/actions/login";
-import GoogleLogin from "../google-login";
+// import GoogleLogin from "../google-login";
 import Link from "next/link";
 
 const LoginForm = () => {
@@ -88,7 +88,7 @@ const LoginForm = () => {
                     {loading ? "Loading..." : "Login"}
                 </button>
             </form>
-            <GoogleLogin />
+            {/* <GoogleLogin /> */}
         </CardWrapper>
     );
 };
