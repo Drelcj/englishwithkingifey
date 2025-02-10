@@ -33,6 +33,7 @@ export default auth(async (req) => {
   }
 
   })
+  
 //check to see if the user should have access to this route
 
 export const config = {
