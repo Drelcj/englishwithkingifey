@@ -1,75 +1,87 @@
 "use client";
-
 import { useForm } from "react-hook-form";
-import { useSession, /*signIn*/ } from "next-auth/react";
-//import { User } from "next-auth";
-import { useRouter } from "next/navigation";
-declare module "next-auth" {
-  interface User {
-    role?: string;
-  }
+import { useSession } from "next-auth/react";
+import RichTextEditor from "../../../components/RichTextEditor";
+import { useState } from "react";
+
+interface PostFormData {
+  title: string;
+  content: string;
+  published: boolean;
 }
 
 export default function CreatePost() {
   const { data: session } = useSession();
-  const router = useRouter();
+  const [content, setContent] = useState("");
 
-  const form = useForm({
+  const form = useForm<PostFormData>({
     defaultValues: {
       title: "",
       content: "",
-    },
+      published: true
+    }
   });
 
-  const onSubmit = async (data: { title: string; content: string }) => {
+  const onSubmit = async (data: PostFormData) => {
     try {
       const res = await fetch("/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${session?.user.id}`
         },
         body: JSON.stringify({
           ...data,
-          authorId: session?.user?.id,
-        }),
+          content: content
+        })
       });
 
       if (res.ok) {
-        router.push("/admin/dashboard");
+        form.reset();
+        setContent("");
+        // Add success toast here
       }
     } catch (error) {
-      console.error("Failed to create post:", error);
+      console.error("Post creation failed:", error);
     }
   };
 
-  if (!session?.user || session.user.role !== "ADMIN") {
-    return <div>Unauthorized</div>;
-  }
+  if (session?.user.role !== "ADMIN") return <div>Unauthorized</div>;
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Create New Post</h1>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+    <div className="max-w-4xl mx-auto p-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Title</span>
+            <span className="label-text">Post Title</span>
           </label>
-          <input
-            {...form.register("title")}
+          <input 
+            {...form.register("title", { required: true })}
             className="input input-bordered w-full"
+            placeholder="Enter post title"
           />
         </div>
+
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Content</span>
+            <span className="label-text">Post Content</span>
           </label>
-          <textarea
-            {...form.register("content")}
-            className="textarea textarea-bordered h-64"
-          />
+          <RichTextEditor content={content} onChange={setContent} />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Create Post
+
+        <div className="form-control">
+          <label className="label cursor-pointer">
+            <span className="label-text">Publish Immediately</span>
+            <input
+              type="checkbox"
+              {...form.register("published")}
+              className="checkbox checkbox-primary"
+            />
+          </label>
+        </div>
+
+        <button type="submit" className="btn btn-primary w-full">
+          Publish Post
         </button>
       </form>
     </div>
