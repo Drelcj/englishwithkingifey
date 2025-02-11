@@ -1,3 +1,4 @@
+import { SessionProvider } from "next-auth/react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -17,7 +18,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "kingifeyacademy",
-  description: "King Ifey is a linguist with a passion for helping professionals achieve clear and confident communication. He's a broadcast journalist, voiceover artist, PR consultant, and the author of 'Win with the Right Grammar'.",
+  description:
+    "King Ifey is a linguist with a passion for helping professionals achieve clear and confident communication. He's a broadcast journalist, voiceover artist, PR consultant, and the author of 'Win with the Right Grammar'.",
 };
 
 export default function RootLayout({
@@ -30,12 +32,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <main className="flex-grow pt-20"> {/* Adjusted the padding (pt-16) as needed to suit the fixed position of the navbar */}
-        
-          {children}
-        </main>
-        <Footer />
+        <SessionProvider>
+          <Navbar />
+          <main className="flex-grow pt-20">
+            {" "}
+            {/* Adjusted the padding (pt-16) as needed to suit the fixed position of the navbar */}
+            {children}
+          </main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

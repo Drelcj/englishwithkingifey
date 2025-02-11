@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
-// import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import UserDropdown from "./UserDropdown";
 
 export default function Navbar () {
-  // const session = useSession();
-  // const user = session.data?.user;
+  const { data: session, status } = useSession();
 
   return (
     <div className="navbar px-10 bg-base-100 fixed w-full bg-blend-color shadow-2xl z-20">
@@ -125,21 +124,23 @@ export default function Navbar () {
           </li> */}
         </ul>
       </div>
-      <div className="navbar-end">
-        {/* {user && <UserButton user={user} />}
-        {!user && session.status !== "loading" && <SignInButton />}  */}
-        {/* create a custom signin page  later */}
-         <Link href="/auth/login" className="btn"> Log In </Link> 
-  
+      <div className="navbar-end gap-2">
+        {status === "authenticated" ? (
+          <>
+            {session.user.role === "ADMIN" && (
+              <Link href="/admin" className="btn btn-ghost">
+                Admin
+              </Link>
+            )}
+            <UserDropdown />
+          </>
+        ) : (
+          <Link href="/auth/login" className="btn">
+            Log In
+          </Link>
+        )}
       </div>
     </div>
   );
 };
 
-// function SignInButton () {
-//   return (
-//     <button>Log in</button>
-//     // <button onClick={() => signIn()} className="btn">Log In</button>
-     
-//   );
-// }
