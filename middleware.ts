@@ -1,40 +1,46 @@
 import authConfig from "./auth.config";
 import NextAuth from "next-auth";
 import { privateRoutes } from "./routes";
-
+import { NextResponse } from "next/server";
 
 const { auth } = NextAuth(authConfig);
+
 export default auth(async (req) => {
-  console.log("middleware called", req.nextUrl.pathname);
-  console.log(req.auth);
-  const isLoggedIn = !!req.auth;
   const { nextUrl } = req;
-  const url = "http://localhost:3000"; //change this to domain for production
-  const isPrivateRoute = privateRoutes.includes(nextUrl.pathname);
-  const isAuthRoute = nextUrl.pathname.includes("/auth");
-  const isApiRoute = nextUrl.pathname.includes("/api");
+  const url = "http://localhost:3000";
 
-  if (isApiRoute) {
-    return;
-  }
-  
-  //this if statement will redirect the user away from the login or register page if they are already logged in
-  if (isLoggedIn && isAuthRoute) {
-    return Response.redirect(`${url}/dashboard`);
-
-  }
-  if (isAuthRoute && !isLoggedIn) {
-    return;
+  // 1. Handle API routes
+  if (nextUrl.pathname.startsWith("/api")) {
+    return NextResponse.next();
   }
 
-    //this if statement will redirect the user to the login page if they are not logged in and try to access a private route
-  if (!isLoggedIn && isPrivateRoute) {
-    return Response.redirect(`${url}/auth/login`);
+  // 2. Get authentication status safely
+  const session = await auth();
+  const isLoggedIn = !!session?.user;
+
+  // 3. Handle authenticated users
+  if (isLoggedIn) {
+    // Redirect away from auth pages
+    if (nextUrl.pathname.startsWith("/auth")) {
+      return NextResponse.redirect(new URL("/dashboard", url));
+    }
+
+    // Admin route protection
+    if (nextUrl.pathname.startsWith("/admin")) {
+      // Type-safe role check
+      if (session.user?.role !== "ADMIN") {
+        return NextResponse.redirect(new URL("/dashboard", url));
+      }
+    }
+  } else {
+    // Handle unauthenticated users
+    if (privateRoutes.includes(nextUrl.pathname)) {
+      return NextResponse.redirect(new URL("/auth/login", url));
+    }
   }
 
-  })
-  
-//check to see if the user should have access to this route
+  return NextResponse.next();
+});
 
 export const config = {
   matcher: ["/((?!api|static|.*\\..*|_next).*)"],
