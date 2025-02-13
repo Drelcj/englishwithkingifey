@@ -28,7 +28,7 @@ export default function CreatePost() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${session?.user.id}`
+          Authorization: `Bearer ${session?.user?.id ?? ''}`
         },
         body: JSON.stringify({
           ...data,
@@ -39,14 +39,14 @@ export default function CreatePost() {
       if (res.ok) {
         form.reset();
         setContent("");
-        // Add success toast here
+        alert("Post created successfully!");
       }
     } catch (error) {
       console.error("Post creation failed:", error);
     }
   };
 
-  if (session?.user.role !== "ADMIN") return <div>Unauthorized</div>;
+  if (!session || !session.user || session?.user.role !== "ADMIN") return <div>Unauthorized</div>;
 
   return (
     <div className="max-w-4xl mx-auto p-4">

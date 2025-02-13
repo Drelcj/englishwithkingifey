@@ -74,6 +74,7 @@ model Course {
   content     String
   price       Float
   isPaid      Boolean  @default(false)
+  published   Boolean  @default(false)
   previewUrl  String?
   author      User     @relation(fields: [authorId], references: [id])
   authorId    String   @db.ObjectId

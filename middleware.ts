@@ -1,43 +1,45 @@
-import authConfig from "./auth.config";
-import NextAuth from "next-auth";
-import { privateRoutes } from "./routes";
 import { NextResponse } from "next/server";
-
-const { auth } = NextAuth(authConfig);
+import { auth } from "@/auth";
+import { privateRoutes } from "./routes";
 
 export default auth(async (req) => {
   const { nextUrl } = req;
-  const url = "http://localhost:3000";
+  const session = req.auth;
+  const path = nextUrl.pathname;
 
-  // 1. Handle API routes
-  if (nextUrl.pathname.startsWith("/api")) {
-    return NextResponse.next();
+  // Allow API routes
+  if (path.startsWith("/api")) return NextResponse.next();
+
+  // Redirect unauthenticated users from private routes
+  if (privateRoutes.includes(path) && !session?.user) {
+    return NextResponse.redirect(new URL("/auth/login", nextUrl));
   }
 
-  // 2. Get authentication status safely
-  const session = await auth();
-  const isLoggedIn = !!session?.user;
-
-  // 3. Handle authenticated users
-  if (isLoggedIn) {
-    // Redirect away from auth pages
-    if (nextUrl.pathname.startsWith("/auth")) {
-      return NextResponse.redirect(new URL("/dashboard", url));
+  // Handle authenticated users
+  if (session?.user) {
+    // Redirect from auth pages to appropriate dashboard
+    if (path.startsWith("/auth")) {
+      return NextResponse.redirect(
+        new URL(
+          session.user.role === "ADMIN" ? "/admin/dashboard" : "/dashboard",
+          nextUrl
+        )
+      );
     }
 
     // Admin route protection
-    if (nextUrl.pathname.startsWith("/admin")) {
-      // Type-safe role check
-      if (session.user?.role !== "ADMIN") {
-        return NextResponse.redirect(new URL("/dashboard", url));
+    if (path.startsWith("/admin")) {
+      if (session.user.role !== "ADMIN") {
+        return NextResponse.redirect(new URL("/dashboard", nextUrl));
       }
+      return NextResponse.next();
     }
-  } else {
-    // Handle unauthenticated users
-    if (privateRoutes.includes(nextUrl.pathname)) {
-      return NextResponse.redirect(new URL("/auth/login", url));
-    }
+
+    // Force admins to the admin dashboard if they are on the regular dashboard
+  if (path.startsWith("/dashboard") && session.user.role === "ADMIN") {
+    return NextResponse.redirect(new URL("/admin/dashboard", nextUrl));
   }
+}
 
   return NextResponse.next();
 });

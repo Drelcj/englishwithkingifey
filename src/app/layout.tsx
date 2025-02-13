@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,7 +37,14 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-grow pt-20">
             {" "}
-            {/* Adjusted the padding (pt-16) as needed to suit the fixed position of the navbar */}
+            <Toaster
+              position="top-center"
+              toastOptions={{
+                className:
+                  "bg-base-100 text-base-content border border-base-300",
+                duration: 5000,
+              }}
+            />
             {children}
           </main>
           <Footer />

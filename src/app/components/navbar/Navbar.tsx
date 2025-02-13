@@ -127,9 +127,9 @@ export default function Navbar () {
       <div className="navbar-end gap-2">
         {status === "authenticated" ? (
           <>
-            {session.user.role === "ADMIN" && (
-              <Link href="/admin" className="btn btn-ghost">
-                Admin
+            {session?.user?.role === "ADMIN" && (
+              <Link href="/admin/dashboard" className="btn btn-ghost">
+                Dashboard
               </Link>
             )}
             <UserDropdown />
