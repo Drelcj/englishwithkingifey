@@ -9,7 +9,8 @@ type Params = {
   };
 
 // 2. Async component with typed props
-export default async function PostPage({ params }: { params: Params }) {
+export default async function PostPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const { postId } = params;
 
   const post = await prisma.post.findUnique({
@@ -40,7 +41,8 @@ export default async function PostPage({ params }: { params: Params }) {
 }
 
 // 4. Add this type declaration if using generateMetadata
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata(props: { params: Promise<Params> }) {
+  const params = await props.params;
   return {
     title: `Post ${params.postId}`,
     description: "Blog post details",
