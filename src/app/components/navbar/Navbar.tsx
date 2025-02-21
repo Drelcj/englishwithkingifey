@@ -50,14 +50,14 @@ export default function Navbar () {
           </li>
             <li>
               <Link href="/blog">Blog</Link>
-              <ul className="p-2">
+              {/* <ul className="p-2">
                 <li>
                   <Link href="/blog">News Content</Link>
                 </li>
                 <li>
                   <Link href="/articles">Articles</Link>
                 </li>
-              </ul>
+              </ul> */}
             </li>
             {/* <li>
             <details>
@@ -99,6 +99,9 @@ export default function Navbar () {
           <Link href="/my-online-courses">My Online Courses</Link>
           </li>
           <li>
+          <Link href="/blog">Blog</Link>
+          </li>
+          {/* <li>
             <details>
               <summary><Link href="/blog">Blog</Link></summary>
               <ul className="p-2">
@@ -110,7 +113,7 @@ export default function Navbar () {
                 </li>
               </ul>
             </details>
-          </li>
+          </li> */}
           {/* <li>
             <details>
               <summary><Link href="/about">About Me</Link></summary>

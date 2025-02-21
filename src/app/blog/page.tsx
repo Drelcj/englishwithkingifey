@@ -9,7 +9,7 @@ export default async function BlogPage() {
   });
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="min-h-screen container mx-auto p-4 mt-8">
       <h1 className="text-4xl font-bold mb-8">Latest Posts</h1>
       <div className="space-y-6">
         {posts.map(post => (
